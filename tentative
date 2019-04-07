@@ -62,6 +62,7 @@ def main():
     torch.cuda.set_device(0)
 
     model = import_module(config_submit['detector_model'].split('.py')[0])
+    data = import_module('data')
     config, net, loss, get_pbb = model.get_model()
     start_epoch = args.start_epoch
     save_dir = args.save_dir
