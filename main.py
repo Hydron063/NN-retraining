@@ -53,7 +53,7 @@ if not skip_detect:
 
     dataset = DataBowl3Detector(testsplit,config1,phase='test',split_comber=split_comber)
     test_loader = DataLoader(dataset,batch_size = 1,
-        shuffle = False,num_workers = 32,pin_memory=False,collate_fn =collate)s
+        shuffle = False,num_workers = 32,pin_memory=False,collate_fn =collate)
 
     test_detect(test_loader, nod_net, get_pbb, bbox_result_path,config1,n_gpu=config_submit['n_gpu'])
 
