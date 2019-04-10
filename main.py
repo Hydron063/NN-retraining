@@ -35,7 +35,9 @@ config1, nod_net, loss, get_pbb = nodmodel.get_model()
 checkpoint = torch.load(config_submit['detector_param'])
 nod_net.load_state_dict(checkpoint['state_dict'])
 
+print('Moment de suspense!')
 torch.cuda.set_device(0)
+print("C'est bon")
 nod_net = nod_net.cuda()
 cudnn.benchmark = True
 nod_net = DataParallel(nod_net)
