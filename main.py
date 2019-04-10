@@ -35,9 +35,7 @@ config1, nod_net, loss, get_pbb = nodmodel.get_model()
 checkpoint = torch.load(config_submit['detector_param'])
 nod_net.load_state_dict(checkpoint['state_dict'])
 
-print('Moment de suspense!')
 torch.cuda.set_device(0)
-print("C'est bon")
 nod_net = nod_net.cuda()
 cudnn.benchmark = True
 nod_net = DataParallel(nod_net)
@@ -55,7 +53,7 @@ if not skip_detect:
 
     dataset = DataBowl3Detector(testsplit,config1,phase='test',split_comber=split_comber)
     test_loader = DataLoader(dataset,batch_size = 1,
-        shuffle = False,num_workers = 32,pin_memory=False,collate_fn =collate)
+        shuffle = False,num_workers = 32,pin_memory=False,collate_fn =collate)s
 
     test_detect(test_loader, nod_net, get_pbb, bbox_result_path,config1,n_gpu=config_submit['n_gpu'])
 
