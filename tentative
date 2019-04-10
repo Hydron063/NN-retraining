@@ -48,6 +48,7 @@ parser.add_argument('--n_test', default=8, type=int, metavar='N',
 
 
 def main():
+    data = import_module('data')
     datapath = config_submit['datapath']
     prep_result_path = config_submit['preprocess_result_path']
     testsplit = full_prep(datapath, prep_result_path,
@@ -61,7 +62,6 @@ def main():
     torch.cuda.set_device(0)
 
     model = import_module(config_submit['detector_model'].split('.py')[0])
-    data = import_module('data')
     config, net, loss, get_pbb = model.get_model()
     start_epoch = args.start_epoch
     save_dir = args.save_dir
