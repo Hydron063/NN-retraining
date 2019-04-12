@@ -60,6 +60,7 @@ def resample(imgs, spacing, new_spacing,order = 2):
         raise ValueError('wrong shape')
 
 def savenpy(id,filelist,prep_folder,data_path,use_existing=True):      
+    print(name, 'Pas :', '///')
     resolution = np.array([1,1,1])
     name = filelist[id]
     if use_existing:
