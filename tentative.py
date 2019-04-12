@@ -2,6 +2,7 @@ from preprocessing import full_prep
 from config_submit import config as config_submit
 from importlib import import_module
 from utils import *
+from training.detector import data
 
 import time
 import shutil
@@ -48,7 +49,6 @@ parser.add_argument('--n_test', default=8, type=int, metavar='N',
 
 
 def main():
-    data = import_module('data')
     datapath = config_submit['datapath']
     prep_result_path = config_submit['preprocess_result_path']
     testsplit = full_prep(datapath, prep_result_path,
