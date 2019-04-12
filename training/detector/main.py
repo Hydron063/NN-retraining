@@ -21,7 +21,7 @@ from config_training import config as config_training
 from layers import acc
 
 parser = argparse.ArgumentParser(description='PyTorch DataBowl3 Detector')
-parser.add_argument('--model', '-m', metavar='MODEL', default='base',
+parser.add_argument('--model', '-m', metavar='MODEL', default='net_detector',
                     help='model')
 parser.add_argument('-j', '--workers', default=32, type=int, metavar='N',
                     help='number of data loading workers (default: 32)')
