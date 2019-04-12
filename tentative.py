@@ -74,16 +74,10 @@ def main():
         if i <= n - k:
             param.requires_grad = False
     files = [f for f in os.listdir(prep_result_path)]
-    testdir = os.path.join(prep_result_path, 'test')
-    if not os.path.exists(testdir):
-        os.mkdir(testdir)
     print(len(files))
     for i in range(len(files)):
         if i < len(files):
             print(i, files[i])
-    for i in range(len(files)):
-        if i < len(files) * 0.7:
-            shutil.move(os.path.join(prep_result_path, files[i]), os.path.join(testdir, files[i]))
 
     if args.resume:
         checkpoint = torch.load(args.resume)
