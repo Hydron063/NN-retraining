@@ -77,6 +77,7 @@ def main():
     testdir = os.path.join(prep_result_path, 'test')
     if not os.path.exists(testdir):
         os.mkdir(testdir)
+    print(len(files))
     for i in range(len(files)):
         if i < len(files) * 0.7:
             print(i, files[i])
