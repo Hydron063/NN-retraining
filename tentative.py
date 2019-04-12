@@ -112,7 +112,7 @@ def main():
         pyfiles = [f for f in os.listdir('./') if f.endswith('.py')]
         for f in pyfiles:
             shutil.copy(f, os.path.join(save_dir, f))
-    n_gpu = setgpu(args.gpu)
+    n_gpu = config_submit['n_gpu']
     args.n_gpu = n_gpu
     net = net.cuda()
     loss = loss.cuda()
