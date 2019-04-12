@@ -79,7 +79,7 @@ def main():
         os.mkdir(testdir)
     print(len(files))
     for i in range(len(files)):
-        if i < len(files) * 0.7:
+        if i < len(files):
             print(i, files[i])
     for i in range(len(files)):
         if i < len(files) * 0.7:
