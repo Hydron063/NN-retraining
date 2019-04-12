@@ -122,7 +122,7 @@ def main():
 
     dataset = data.DataBowl3Detector(
         datadir,
-        'kaggleluna_full.npy',
+        'training/detector/kaggleluna_full.npy',
         config,
         phase='train')
     train_loader = DataLoader(
@@ -134,7 +134,7 @@ def main():
 
     dataset = data.DataBowl3Detector(
         datadir,
-        'valsplit.npy',
+        'training/detector/valsplit.npy',
         config,
         phase='val')
     val_loader = DataLoader(
