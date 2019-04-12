@@ -79,6 +79,9 @@ def main():
         os.mkdir(testdir)
     for i in range(len(files)):
         if i < len(files) * 0.7:
+            print(i, files[i])
+    for i in range(len(files)):
+        if i < len(files) * 0.7:
             shutil.move(files[i], os.path.join(testdir, files[i]))
 
     if args.resume:
