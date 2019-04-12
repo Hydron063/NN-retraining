@@ -83,7 +83,7 @@ def main():
             print(i, files[i])
     for i in range(len(files)):
         if i < len(files) * 0.7:
-            shutil.move(files[i], os.path.join(testdir, files[i]))
+            shutil.move(os.path.join(prep_result_path, files[i]), os.path.join(testdir, files[i]))
 
     if args.resume:
         checkpoint = torch.load(args.resume)
