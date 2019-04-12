@@ -70,7 +70,7 @@ def savenpy(id,filelist,prep_folder,data_path,use_existing=True):
         im, m1, m2, spacing = step1_python(os.path.join(data_path,name))
         Mask = m1+m2
         
-        print('1 pas')
+        print(name, 'Pas :', 1)
         newshape = np.round(np.array(Mask.shape)*spacing/resolution)
         xx,yy,zz= np.where(Mask)
         box = np.array([[np.min(xx),np.max(xx)],[np.min(yy),np.max(yy)],[np.min(zz),np.max(zz)]])
@@ -81,7 +81,7 @@ def savenpy(id,filelist,prep_folder,data_path,use_existing=True):
         extendbox = extendbox.astype('int')
 
 
-        print('2 pas')
+        print(name, 'Pas :', 2)
         convex_mask = m1
         dm1 = process_mask(m1)
         dm2 = process_mask(m2)
@@ -91,7 +91,7 @@ def savenpy(id,filelist,prep_folder,data_path,use_existing=True):
         bone_thresh = 210
         pad_value = 170
 
-        print('3 pas')
+        print(name, 'Pas :', 3)
         im[np.isnan(im)]=-2000
         sliceim = lumTrans(im)
         sliceim = sliceim*dilatedMask+pad_value*(1-dilatedMask).astype('uint8')
@@ -101,7 +101,7 @@ def savenpy(id,filelist,prep_folder,data_path,use_existing=True):
         sliceim2 = sliceim1[extendbox[0,0]:extendbox[0,1],
                     extendbox[1,0]:extendbox[1,1],
                     extendbox[2,0]:extendbox[2,1]]
-        print('4 pas')
+        print(name, 'Pas :', 4)
         sliceim = sliceim2[np.newaxis,...]
         np.save(os.path.join(prep_folder,name+'_clean'),sliceim)
         np.save(os.path.join(prep_folder,name+'_label'),np.array([[0,0,0,0]]))
