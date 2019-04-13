@@ -60,10 +60,10 @@ def resample(imgs, spacing, new_spacing,order = 2):
         raise ValueError('wrong shape')
 
 def savenpy(id,filelist,prep_folder,data_path,use_existing=True):      
-    print(name, 'Pas :', '///')
-    return
     resolution = np.array([1,1,1])
     name = filelist[id]
+    print(name, 'Pas :', '///')
+    return
     if use_existing:
         if os.path.exists(os.path.join(prep_folder,name+'_label.npy')) and os.path.exists(os.path.join(prep_folder,name+'_clean.npy')):
             print(name+' had been done')
