@@ -113,7 +113,6 @@ def main():
     cudnn.benchmark = True
     net = DataParallel(net)
     datadir = prep_result_path
-    return
 
     dataset = data.DataBowl3Detector(
         datadir,
