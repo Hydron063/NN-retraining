@@ -25,11 +25,11 @@ class DataBowl3Detector(Dataset):
         self.augtype = config['augtype']
         self.pad_value = config['pad_value']
         self.split_comber = split_comber
-        idcs = np.load(split_path)
+        idcs = ['first']
         if phase!='test':
             idcs = [f for f in idcs if (f not in self.blacklist)]
 
-        self.filenames = [os.path.join(data_dir, '%s_clean.npy' % 'first')]
+        self.filenames = [os.path.join(data_dir, '%s_clean.npy' % idx) for idx in idcs]
         self.kagglenames = [f for f in self.filenames if len(f.split('/')[-1].split('_')[0])>20]
         self.lunanames = [f for f in self.filenames if len(f.split('/')[-1].split('_')[0])<20]
         
