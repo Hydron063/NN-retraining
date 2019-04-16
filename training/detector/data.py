@@ -43,6 +43,7 @@ class DataBowl3Detector(Dataset):
 
         self.sample_bboxes = labels
         if self.phase != 'test':
+            print('On attend', len(labels))
             self.bboxes = []
             for i, l in enumerate(labels):
                 if len(l) > 0 :
@@ -53,8 +54,8 @@ class DataBowl3Detector(Dataset):
                             self.bboxes+=[[np.concatenate([[i],t])]]*2
                         if t[3]>sizelim3:
                             self.bboxes+=[[np.concatenate([[i],t])]]*4
-        else:
-            print("Diable")
+                else:
+                    print("Diable")
 
         self.crop = Crop(config)
         self.label_mapping = LabelMapping(config, self.phase)
