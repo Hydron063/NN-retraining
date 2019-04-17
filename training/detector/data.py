@@ -37,7 +37,9 @@ class DataBowl3Detector(Dataset):
         
         for idx in idcs:
             l = np.load(os.path.join(data_dir, '%s_label.npy' %idx))
+            print(l)
             if np.all(l==0):
+                print('Putain!')
                 l=np.array([])
             labels.append(l)
 
