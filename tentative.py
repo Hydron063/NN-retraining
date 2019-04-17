@@ -51,7 +51,7 @@ parser.add_argument('--n_test', default=8, type=int, metavar='N',
 def main():
     datapath = config_submit['datapath']
     prep_result_path = config_submit['preprocess_result_path']
-    full_prep()
+    prepare.full_prep()
 
     global args
     args = parser.parse_args()
