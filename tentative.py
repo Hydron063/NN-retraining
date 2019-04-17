@@ -1,4 +1,4 @@
-from preprocessing import full_prep
+from training import prepare
 from config_submit import config as config_submit
 from importlib import import_module
 from utils import *
