@@ -18,7 +18,6 @@ import pandas
 from multiprocessing import Pool
 from functools import partial
 import sys
-sys.path.append('../preprocessing')
 from step1 import step1_python
 import warnings
 
