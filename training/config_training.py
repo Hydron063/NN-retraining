@@ -1,4 +1,4 @@
-config = {'stage1_data_path':'./../drive/My Drive/work/DataBowl3/stage1/stage1/',
+config = {'stage1_data_path':'./../drive/My Drive/work/DataBowl3/stage2/stage2/first',
           'luna_raw':'./../drive/My Drive/work/DataBowl3/luna/raw/',
           'luna_segment':'./../drive/My Drive/work/DataBowl3/luna/seg-lungs-LUNA16/',
           
