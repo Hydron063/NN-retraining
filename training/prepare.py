@@ -166,7 +166,6 @@ def full_prep(step1=True,step2 = True):
             print(os.getcwd(), '1')
             os.chdir('./..')
             print(os.getcwd(), '2')
-            input()
             content = np.array(pandas.read_csv(f))
             content = content[content[:,0]!=np.nan]
             tmp.append(content[:,:5])
