@@ -163,7 +163,8 @@ def full_prep(step1=True,step2 = True):
             print(os.path.exists(f))
             print(os.path.exists('./detector/labels/label_job5.csv'))
             print(os.path.exists('/Rage/training/detector/labels/label_job5.csv'))
-            print(os.getcwd())
+            print(os.getcwd(), 'sdad)
+            print('aaa')
             input()
             content = np.array(pandas.read_csv(f))
             content = content[content[:,0]!=np.nan]
