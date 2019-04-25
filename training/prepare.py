@@ -97,7 +97,7 @@ def savenpy(id,annos,filelist,data_path,prep_folder):
     label = label[:,[3,1,2,4]].astype('float')
     
     print('S1')
-    im, m1, m2, spacing = step1_python(os.path.join(data_path,name))
+    im, m1, m2, spacing = step1_python(data_path)
     Mask = m1+m2
     
     print('S2')
