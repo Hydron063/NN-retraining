@@ -171,7 +171,7 @@ def full_prep(step1=True,step2 = True):
             content = content[content[:,0]!=np.nan]
             tmp.append(content[:,:5])
         alllabel = np.concatenate(tmp,0)
-        if !os.path.exists('./training'):
+        if not os.path.exists('./training'):
             os.chdir('./..')
         filelist = os.listdir(config['stage1_data_path'])
 
