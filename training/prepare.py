@@ -116,16 +116,19 @@ def savenpy(id,annos,filelist,data_path,prep_folder):
     dm1 = process_mask(m1)
     dm2 = process_mask(m2)
     dilatedMask = dm1+dm2
+    print('S3.0')
     Mask = m1+m2
     extramask = dilatedMask - Mask
     bone_thresh = 210
     pad_value = 170
     im[np.isnan(im)]=-2000
     sliceim = lumTrans(im)
+    print('S3.1')
     sliceim = sliceim*dilatedMask+pad_value*(1-dilatedMask).astype('uint8')
     bones = sliceim*extramask>bone_thresh
     sliceim[bones] = pad_value
     sliceim1,_ = resample(sliceim,spacing,resolution,order=1)
+    print('S3.2')
     sliceim2 = sliceim1[extendbox[0,0]:extendbox[0,1],
                 extendbox[1,0]:extendbox[1,1],
                 extendbox[2,0]:extendbox[2,1]]
