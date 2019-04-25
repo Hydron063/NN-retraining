@@ -226,8 +226,9 @@ def two_lung_only(bw, spacing, max_iter=22, max_ratio=4.8):
     return bw1, bw2, bw
 
 def step1_python(case_path):
-    print('step1')
+    print('step1', case_path)
     case = load_scan(case_path)
+    print('Pas1')
     case_pixels, spacing = get_pixels_hu(case)
     bw = binarize_per_slice(case_pixels, spacing)
     flag = 0
@@ -238,7 +239,8 @@ def step1_python(case_path):
         bw = np.copy(bw0)
         bw, flag = all_slice_analysis(bw, spacing, cut_num=cut_num, vol_limit=[0.68,7.5])
         cut_num = cut_num + cut_step
-
+    
+    print('Pas2')
     bw = fill_hole(bw)
     bw1, bw2, bw = two_lung_only(bw, spacing)
     return case_pixels, bw1, bw2, spacing
