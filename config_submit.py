@@ -1,5 +1,5 @@
 config = {'datapath':'./../drive/My Drive/work/DataBowl3/stage2/stage2/',
-          'preprocess_result_path':'./prep_result/',
+          'preprocess_result_path':'./../drive/My Drive/work/DataBowl3/stage1/preprocess/',
           'outputfile':'prediction.csv',
           
           'detector_model':'net_detector',
