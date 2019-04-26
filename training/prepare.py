@@ -118,7 +118,7 @@ def savenpy(id,annos,filelist,data_path,prep_folder):
     dilatedMask = dm1+dm2
     print('S3.0')
     Mask = m1+m2
-    extramask = dilatedMask - Mask
+    extramask = dilatedMask ^ Mask
     bone_thresh = 210
     pad_value = 170
     im[np.isnan(im)]=-2000
