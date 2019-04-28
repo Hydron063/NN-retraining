@@ -25,7 +25,7 @@ class DataBowl3Detector(Dataset):
         self.augtype = config['augtype']
         self.pad_value = config['pad_value']
         self.split_comber = split_comber
-        idcs = ['first']
+        idcs = np.load(split_path)
         if phase!='test':
             idcs = [f for f in idcs if (f not in self.blacklist)]
 
