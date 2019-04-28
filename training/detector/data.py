@@ -57,7 +57,7 @@ class DataBowl3Detector(Dataset):
                         if t[3]>sizelim3:
                             self.bboxes+=[[np.concatenate([[i],t])]]*4
                 else:
-                    print("Diable")
+                    print("Diable", i, l)
 
         self.crop = Crop(config)
         self.label_mapping = LabelMapping(config, self.phase)
