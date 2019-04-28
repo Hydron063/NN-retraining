@@ -117,6 +117,7 @@ def main():
         'training/detector/kaggleluna_full.npy',
         config,
         phase='train')
+    print('Longueur', len(dataset))
     train_loader = DataLoader(
         dataset,
         batch_size=args.batch_size,
