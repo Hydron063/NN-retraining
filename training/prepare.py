@@ -137,12 +137,16 @@ def savenpy(id,annos,filelist,data_path,prep_folder):
 
     print('S4')
     if len(label)==0:
+        print('V1')
         label2 = np.array([[0,0,0,0]])
     elif len(label[0])==0:
+        print('V2')
         label2 = np.array([[0,0,0,0]])
     elif label[0][0]==0:
+        print('V3')
         label2 = np.array([[0,0,0,0]])
     else:
+        print('V4')
         haslabel = 1
         label2 = np.copy(label).T
         label2[:3] = label2[:3][[0,2,1]]
