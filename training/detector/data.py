@@ -61,7 +61,7 @@ class DataBowl3Detector(Dataset):
                     print('Apres', self.bboxes)
                 else:
                     print("Diable", i, l)
-            self.bboxes = np.concatenate(self.bboxes,axis = 0
+            self.bboxes = np.concatenate(self.bboxes,axis = 0)
 
         self.crop = Crop(config)
         self.label_mapping = LabelMapping(config, self.phase)
