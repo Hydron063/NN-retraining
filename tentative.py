@@ -227,7 +227,7 @@ def validate(data_loader, net, loss):
         output = net(data, coord)
         loss_output = loss(output, target, train=False)
 
-        loss_output[0] = loss_output[0].data[0]
+        loss_output[0] = loss_output[0].data
         metrics.append(loss_output)
     end_time = time.time()
 
