@@ -47,7 +47,9 @@ class DataBowl3Detector(Dataset):
         if self.phase != 'test':
             print('On attend', len(labels))
             self.bboxes = []
+            print('En boucle !')
             for i, l in enumerate(labels):
+                print('Avant', self.bboxes)
                 if len(l) > 0 :
                     for t in l:
                         if t[3]>sizelim:
@@ -56,6 +58,7 @@ class DataBowl3Detector(Dataset):
                             self.bboxes+=[[np.concatenate([[i],t])]]*2
                         if t[3]>sizelim3:
                             self.bboxes+=[[np.concatenate([[i],t])]]*4
+                print('Apres', self.bboxes)
                 else:
                     print("Diable", i, l)
 
@@ -80,6 +83,7 @@ class DataBowl3Detector(Dataset):
         if self.phase != 'test':
             if not isRandomImg:
                 bbox = self.bboxes[idx]
+                print('Coup de grace', idx, bbox)
                 filename = self.filenames[int(bbox[0])]
                 imgs = np.load(filename)
                 bboxes = self.sample_bboxes[int(bbox[0])]
