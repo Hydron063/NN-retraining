@@ -178,7 +178,7 @@ def train(data_loader, net, loss, epoch, optimizer, get_lr, save_freq, save_dir)
         loss_output[0].backward()
         optimizer.step()
 
-        loss_output[0] = loss_output[0].data[0]
+        loss_output[0] = loss_output[0].data
         metrics.append(loss_output)
 
     if epoch % args.save_freq == 0:
