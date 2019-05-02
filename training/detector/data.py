@@ -49,8 +49,8 @@ class DataBowl3Detector(Dataset):
             self.bboxes = []
             print('En boucle !')
             for i, l in enumerate(labels):
-                print('Avant', self.bboxes)
                 if len(l) > 0 :
+                    print('Avant', self.bboxes)
                     for t in l:
                         if t[3]>sizelim:
                             self.bboxes.append([np.concatenate([[i],t])])
@@ -58,7 +58,7 @@ class DataBowl3Detector(Dataset):
                             self.bboxes+=[[np.concatenate([[i],t])]]*2
                         if t[3]>sizelim3:
                             self.bboxes+=[[np.concatenate([[i],t])]]*4
-                print('Apres', self.bboxes)
+                    print('Apres', self.bboxes)
                 else:
                     print("Diable", i, l)
 
