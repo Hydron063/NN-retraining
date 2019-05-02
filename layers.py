@@ -205,7 +205,7 @@ class Loss(nn.Module):
             pos_correct = 0
             pos_total = 0
             regress_losses_data = [0,0,0,0]
-        classify_loss_data = classify_loss.data[0]
+        classify_loss_data = classify_loss.data
 
         loss = classify_loss
         for regress_loss in regress_losses:
