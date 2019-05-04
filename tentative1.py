@@ -118,6 +118,7 @@ topk = config2['topk']
 case_net = casemodel.CaseNet(topk=topk)
 args.miss_ratio = config2['miss_ratio']
 args.miss_thresh = config2['miss_thresh']
+config2['bboxpath'] = bbox_result_path
 
 
 save_dir = args.save_dir
