@@ -120,6 +120,7 @@ args.miss_ratio = config2['miss_ratio']
 args.miss_thresh = config2['miss_thresh']
 
 
+save_dir = args.save_dir
 start_epoch = args.start_epoch
 if args.resume:
     checkpoint = torch.load(args.resume)
