@@ -64,7 +64,7 @@ def test_detect(data_loader, net, get_pbb, save_dir, config,n_gpu):
             np.save(os.path.join(save_dir, shortname+'_feature.npy'), feature_selected)
         #tp,fp,fn,_ = acc(pbb,lbb,0,0.1,0.1)
         #print([len(tp),len(fp),len(fn)])
-        print([i_name,shortname])
+        print([i_name, name, shortname])
         e = time.time()
         
         np.save(os.path.join(save_dir, shortname+'_pbb.npy'), pbb)
