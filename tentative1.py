@@ -95,7 +95,7 @@ else:
 
 bbox_result_path = './bbox_result'
 if not os.path.exists(bbox_result_path):
-os.mkdir(bbox_result_path)
+    os.mkdir(bbox_result_path)
 
 if not skip_detect:
     margin = 32
