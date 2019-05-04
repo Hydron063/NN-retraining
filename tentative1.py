@@ -144,7 +144,6 @@ trainsplit = np.array(['LUNGx-CT001'])
 valsplit = np.array(['LUNGx-CT001'])
 testsplit = np.array(['LUNGx-CT001'])
 
-trainsplit = np.load('full.npy')
 dataset = DataBowl3Classifier(trainsplit,config2,phase = 'train')
 train_loader_case = DataLoader(dataset,batch_size = args.batch_size2,
     shuffle = True,num_workers = args.workers,pin_memory=True)
