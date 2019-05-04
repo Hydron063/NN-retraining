@@ -1,3 +1,5 @@
+import argparse
+import os
 from preprocessing import full_prep
 from config_submit import config as config_submit
 
@@ -11,6 +13,7 @@ from torch.autograd import Variable
 from layers import acc
 from data_detector import DataBowl3Detector,collate
 from data_classifier import DataBowl3Classifier
+from training.classifier.trainval_classifier import *
 
 from utils import *
 from split_combine import SplitComb
@@ -41,7 +44,7 @@ parser.add_argument('--weight-decay', '--wd', default=1e-4, type=float,
                     metavar='W', help='weight decay (default: 1e-4)')
 parser.add_argument('--save-freq', default='5', type=int, metavar='S',
                     help='save frequency')
-parser.add_argument('--resume', default='', type=str, metavar='PATH',
+parser.add_argument('--resume', default='./model/classifier.ckpt', type=str, metavar='PATH',
                     help='path to latest checkpoint (default: none)')
 parser.add_argument('--save-dir', default='', type=str, metavar='SAVE',
                     help='directory to save checkpoint (default: none)')
@@ -87,20 +90,50 @@ if not skip_prep:
 else:
     testsplit = os.listdir(datapath)
 
-net.forward(prep_result_path)
+#det_res = net.forward(prep_result_path)
+#np.save('det_res.npy', det_res)
 
-# ???
+bbox_result_path = './bbox_result'
+if not os.path.exists(bbox_result_path):
+os.mkdir(bbox_result_path)
+
+if not skip_detect:
+    margin = 32
+    sidelen = 144
+    config1['datadir'] = prep_result_path
+    split_comber = SplitComb(sidelen,config1['max_stride'],config1['stride'],margin,pad_value= config1['pad_value'])
+
+    dataset = DataBowl3Detector(testsplit,config1,phase='test',split_comber=split_comber)
+    test_loader = DataLoader(dataset,batch_size = 1,
+        shuffle = False,num_workers = 32,pin_memory=False,collate_fn =collate)
+
+    test_detect(test_loader, nod_net, get_pbb, bbox_result_path,config1,n_gpu=config_submit['n_gpu'])
+
 
 casemodel = import_module(args.model2)
 config2 = casemodel.config
 args.lr_stage2 = config2['lr_stage']
 args.lr_preset2 = config2['lr']
 topk = config2['topk']
-case_net = casemodel.CaseNet(topk=topk, nodulenet=nod_net)
+case_net = casemodel.CaseNet(topk=topk)
 args.miss_ratio = config2['miss_ratio']
 args.miss_thresh = config2['miss_thresh']
 
 
+start_epoch = args.start_epoch
+if args.resume:
+    checkpoint = torch.load(args.resume)
+    if start_epoch == 0:
+        start_epoch = checkpoint['epoch'] + 1
+    if not save_dir:
+        save_dir = checkpoint['save_dir']
+    else:
+        save_dir = os.path.join('results',save_dir)
+case_net.load_state_dict(checkpoint['state_dict'])
+if args.epochs == None:
+    end_epoch = args.lr_stage2[-1]
+else:
+    end_epoch = args.epochs
 
 
 print(save_dir)
