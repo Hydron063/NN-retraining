@@ -39,7 +39,7 @@ class DataBowl3Classifier(Dataset):
  
         
         for idx in idcs:
-            pbb = np.load(os.path.join(bboxpath,idx+'_pbb.npy'))
+            pbb = np.load(os.path.join(bboxpath,idx.split('-')[0]+'_pbb.npy'))
             pbb = pbb[pbb[:,0]>config['conf_th']]
             pbb = nms(pbb, config['nms_th'])
             
