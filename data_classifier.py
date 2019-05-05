@@ -43,7 +43,7 @@ class DataBowl3Classifier(Dataset):
             pbb = pbb[pbb[:,0]>config['conf_th']]
             pbb = nms(pbb, config['nms_th'])
             
-            lbb = np.load(os.path.join(bboxpath,idx+'_lbb.npy'))
+            lbb = np.load(os.path.join(bboxpath,idx.split('-')[0]+'_lbb.npy'))
             pbb_label = []
             
             for p in pbb:
