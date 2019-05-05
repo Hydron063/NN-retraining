@@ -140,10 +140,11 @@ else:
 
 print(save_dir)
 print(args.save_freq)
+print(testsplit)
 # Les noms des dossiers avec les images (affectes manuellement, a corriger)
-trainsplit = np.array(['LUNGx'])
-valsplit = np.array(['LUNGx'])
-testsplit = np.array(['LUNGx'])
+trainsplit = testsplit
+valsplit = testsplit
+testsplit = testsplit
 
 dataset = DataBowl3Classifier(trainsplit,config2,phase = 'train')
 train_loader_case = DataLoader(dataset,batch_size = args.batch_size2,
