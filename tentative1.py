@@ -161,6 +161,7 @@ all_loader_case = DataLoader(dataset,batch_size = max([args.batch_size2,1]),
 optimizer2 = torch.optim.SGD(case_net.parameters(),
     args.lr,momentum = 0.9,weight_decay = args.weight_decay)
 
+end_epoch += 5
 print('Le debut et la fin', start_epoch, end_epoch)
 
 for epoch in range(start_epoch, end_epoch + 1):
