@@ -14,7 +14,7 @@ import os
 config = {}
 config['topk'] = 5
 config['resample'] = None
-config['datadir'] = '/run/shm/preprocess_1_3/'
+config['datadir'] = './../drive/My Drive/work/DataBowl3/stage1/preprocess/'
 config['preload_train'] = True
 config['bboxpath'] = '../cpliangming/results/res18_prep3/bbox/'
 config['labelfile'] = '../stage1_labels.csv'
