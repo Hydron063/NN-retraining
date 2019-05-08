@@ -143,6 +143,7 @@ loss = loss.cuda()
 case_net = DataParallel(case_net)
 
 
+save_dir = os.path.join('./', save_dir)
 print(save_dir)
 print(args.save_freq)
 print(testsplit)
