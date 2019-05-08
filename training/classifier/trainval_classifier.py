@@ -116,8 +116,8 @@ def val_casenet(epoch,model,data_loader,args):
         missLoss = -torch.sum(missMask*isnod*torch.log(casePred_each+0.001))/xsize[0]/xsize[1]
 
         #loss2 = binary_cross_entropy(sigmoid(casePred),y[:,0])
-        loss2Hist.append(loss2.data[0])
-        missHist.append(missLoss.data[0])
+        loss2Hist.append(loss2.data)
+        missHist.append(missLoss.data)
         lenHist.append(len(x))
         outdata = casePred.data.cpu().numpy()
         #print([i,data_loader.dataset.split[i,1],sigmoid(casePred).data.cpu().numpy()])
