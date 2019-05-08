@@ -136,6 +136,11 @@ if args.epochs == None:
     end_epoch = args.lr_stage2[-1]
 else:
     end_epoch = args.epochs
+    
+
+case_net = case_net.cuda()
+loss = loss.cuda()
+case_net = DataParallel(case_net)
 
 
 print(save_dir)
