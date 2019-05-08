@@ -192,7 +192,7 @@ for epoch in range(start_epoch, end_epoch + 1):
         
         if not os.path.exists(save_dir):
             os.mkdir(save_dir)
-        open(os.path.join(save_dir, '%03d.ckpt' % epoch)).close()
+        open(os.path.join(save_dir, '%03d.ckpt' % epoch), 'w').close()
         torch.save({
             'epoch': epoch,
             'save_dir': save_dir,
