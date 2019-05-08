@@ -63,8 +63,8 @@ def train_casenet(epoch,model,data_loader,optimizer,args):
         #torch.nn.utils.clip_grad_norm(model.parameters(), 1)
 
         optimizer.step()
-        loss2Hist.append(loss2.data[0])
-        missHist.append(missLoss.data[0])
+        loss2Hist.append(loss2.data)
+        missHist.append(missLoss.data)  #[0]????
         lenHist.append(len(x))
         outdata = casePred.data.cpu().numpy()
 
