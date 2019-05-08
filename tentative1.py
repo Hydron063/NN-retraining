@@ -188,7 +188,10 @@ for epoch in range(start_epoch, end_epoch + 1):
         state_dict = case_net.module.state_dict()
         for key in state_dict.keys():
             state_dict[key] = state_dict[key].cpu()
-
+        
+        if not os.path.exists(save_dir):
+            os.mkdir(save_dir)
+        open(os.path.join(save_dir, '%03d.ckpt' % epoch)).close()
         torch.save({
             'epoch': epoch,
             'save_dir': save_dir,
