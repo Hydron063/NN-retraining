@@ -149,8 +149,8 @@ print(args.save_freq)
 print(testsplit)
 # Les noms des dossiers avec les images (affectes manuellement, a corriger)
 trainsplit = testsplit
-valsplit = testsplit
-testsplit = testsplit
+valsplit = os.listdir(config_submit['valpath'])
+testsplit = os.listdir(config_submit['testpath'])
 
 dataset = DataBowl3Classifier(trainsplit,config2,phase = 'train')
 train_loader_case = DataLoader(dataset,batch_size = args.batch_size2,
