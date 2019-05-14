@@ -62,15 +62,12 @@ def resample(imgs, spacing, new_spacing,order = 2):
 def savenpy(id,filelist,prep_folder,data_path,use_existing=True):      
     resolution = np.array([1,1,1])
     name = filelist[id]
-    print(name, 'Pas :', '///')
     if use_existing:
         if os.path.exists(os.path.join(prep_folder,name+'_label.npy')) and os.path.exists(os.path.join(prep_folder,name+'_clean.npy')):
             print(name+' had been done')
             return
     try:
-        print(name, 'Pas :', 'initial')
         im, m1, m2, spacing = step1_python(os.path.join(data_path,name))
-        print(name, 'Pas :', 0)
         Mask = m1+m2
         
         print(name, 'Pas :', 1)
