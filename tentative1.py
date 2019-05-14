@@ -147,7 +147,7 @@ save_dir = os.path.join('./', save_dir)
 print(save_dir)
 print(args.save_freq)
 print(testsplit)
-# Les noms des dossiers avec les images (affectes manuellement, a corriger)
+# Les noms des dossiers avec les images 3D
 trainsplit = testsplit
 valsplit = os.listdir(config_submit['valpath'])
 testsplit = os.listdir(config_submit['testpath'])
