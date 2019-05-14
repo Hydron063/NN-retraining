@@ -1,4 +1,6 @@
 config = {'datapath':'./../drive/My Drive/work/DataBowl3/stage2/stage2/',
+          'valpath':'./../drive/My Drive/work/DataBowl3/stage2/val/',
+          'testpath':'./../drive/My Drive/work/DataBowl3/stage2/test/',
           'preprocess_result_path':'./../drive/My Drive/work/DataBowl3/stage1/preprocess/',
           'outputfile':'prediction.csv',
           
