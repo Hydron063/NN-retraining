@@ -40,7 +40,7 @@ config['nms_th'] = 0.05
 config['filling_value'] = 160
 
 config['startepoch'] = 20
-config['lr_stage'] = np.array([50,100,140,165])
+config['lr_stage'] = np.array([50,100,140,170])
 config['lr'] = [0.01,0.001,0.0001,0.00001]
 config['miss_ratio'] = 1
 config['miss_thresh'] = 0.03
