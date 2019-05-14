@@ -127,6 +127,7 @@ def val_casenet(epoch,model,data_loader,args):
         fnn += np.sum(0==pred[ydata==1])
         acc = np.mean(ydata==pred)
         accHist.append(acc)
+        print(i, '\nLoss2: ', loss2, '\nmissLoss: ', missLoss, '\nPred: ', pred, '\nAcc: ', acc)
     endtime = time.time()
     lenHist = np.array(lenHist)
     loss2Hist = np.array(loss2Hist)
