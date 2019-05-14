@@ -113,7 +113,6 @@ def savenpy(id,filelist,prep_folder,data_path,use_existing=True):
     
 def full_prep(data_path,prep_folder,n_worker = None,use_existing=True):
     warnings.filterwarnings("ignore")
-    print('Salut')
     if not os.path.exists(prep_folder):
         os.mkdir(prep_folder)
 
