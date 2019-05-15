@@ -84,8 +84,12 @@ def train_casenet(epoch,model,data_loader,optimizer,args):
     mean_loss2 = np.sum(loss2Hist*lenHist)/np.sum(lenHist)
     mean_missloss = np.sum(missHist*lenHist)/np.sum(lenHist)
     mean_acc = np.sum(accHist*lenHist)/np.sum(lenHist)
+    if not os.path.exists(stat_path):
+        open(stat_path, 'w').close()    
     print('Train, epoch %d, loss2 %.4f, miss loss %.4f, acc %.4f, tpn %d, fpn %d, fnn %d, time %3.2f, lr % .5f '
-          %(epoch,mean_loss2,mean_missloss,mean_acc,tpn,fpn, fnn, endtime-starttime,lr))
+          %(epoch,mean_loss2,mean_missloss,mean_acc,tpn,fpn, fnn, endtime-starttime, lr))
+    open(stat_path, 'a').write('Train, epoch %d, loss2 %.4f, miss loss %.4f, acc %.4f, tpn %d, fpn %d, fnn %d, time %3.2f, lr % .5f \n'
+          %(epoch,mean_loss2,mean_missloss,mean_acc,tpn,fpn, fnn, endtime-starttime, lr))    
 
 def val_casenet(epoch,model,data_loader,args):
     model.eval()
@@ -135,7 +139,12 @@ def val_casenet(epoch,model,data_loader,args):
     mean_loss2 = np.sum(loss2Hist*lenHist)/np.sum(lenHist)
     mean_missloss = np.sum(missHist*lenHist)/np.sum(lenHist)
     mean_acc = np.sum(accHist*lenHist)/np.sum(lenHist)
+    stat_path = './../drive/My Drive/work/DataBowl3/Statistiques/1.txt'
+    if not os.path.exists(stat_path):
+        open(stat_path, 'w').close()
     print('Valid, epoch %d, loss2 %.4f, miss loss %.4f, acc %.4f, tpn %d, fpn %d, fnn %d,  time %3.2f'
+          %(epoch,mean_loss2,mean_missloss,mean_acc,tpn,fpn, fnn, endtime-starttime))
+    open(stat_path, 'a').write('Valid, epoch %d, loss2 %.4f, miss loss %.4f, acc %.4f, tpn %d, fpn %d, fnn %d,  time %3.2f\n'
           %(epoch,mean_loss2,mean_missloss,mean_acc,tpn,fpn, fnn, endtime-starttime))
 
     
