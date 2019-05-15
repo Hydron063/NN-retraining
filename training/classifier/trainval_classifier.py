@@ -84,6 +84,8 @@ def train_casenet(epoch,model,data_loader,optimizer,args):
     mean_loss2 = np.sum(loss2Hist*lenHist)/np.sum(lenHist)
     mean_missloss = np.sum(missHist*lenHist)/np.sum(lenHist)
     mean_acc = np.sum(accHist*lenHist)/np.sum(lenHist)
+    
+    stat_path = './../drive/My Drive/work/DataBowl3/Statistiques/1.txt'
     if not os.path.exists(stat_path):
         open(stat_path, 'w').close()    
     print('Train, epoch %d, loss2 %.4f, miss loss %.4f, acc %.4f, tpn %d, fpn %d, fnn %d, time %3.2f, lr % .5f '
