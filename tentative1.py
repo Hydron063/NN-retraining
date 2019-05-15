@@ -69,6 +69,7 @@ args = parser.parse_args()
 
 
 datapath = config_submit['datapath']
+valpath = config_submit['valpath']
 prep_result_path = config_submit['preprocess_result_path']
 skip_prep = config_submit['skip_preprocessing']
 skip_detect = config_submit['skip_detect']
@@ -87,8 +88,12 @@ if not skip_prep:
     testsplit = full_prep(datapath,prep_result_path,
                           n_worker = config_submit['n_worker_preprocessing'],
                           use_existing=config_submit['use_exsiting_preprocessing'])
+    valsplit = full_prep(valpath,prep_result_path,
+                          n_worker = config_submit['n_worker_preprocessing'],
+                          use_existing=config_submit['use_exsiting_preprocessing'])
 else:
     testsplit = os.listdir(datapath)
+    valsplit = os.listdir(valpath)
 
 #det_res = net.forward(prep_result_path)
 #np.save('det_res.npy', det_res)
@@ -104,6 +109,12 @@ if not skip_detect:
     split_comber = SplitComb(sidelen,config1['max_stride'],config1['stride'],margin,pad_value= config1['pad_value'])
 
     dataset = DataBowl3Detector(testsplit,config1,phase='test',split_comber=split_comber)
+    test_loader = DataLoader(dataset,batch_size = 1,
+        shuffle = False,num_workers = 32,pin_memory=False,collate_fn =collate)
+
+    test_detect(test_loader, nod_net, get_pbb, bbox_result_path,config1,n_gpu=config_submit['n_gpu'])
+    
+    dataset = DataBowl3Detector(valsplit,config1,phase='test',split_comber=split_comber)
     test_loader = DataLoader(dataset,batch_size = 1,
         shuffle = False,num_workers = 32,pin_memory=False,collate_fn =collate)
 
@@ -149,7 +160,7 @@ print(args.save_freq)
 print(testsplit)
 # Les noms des dossiers avec les images 3D
 trainsplit = testsplit
-valsplit = os.listdir(config_submit['valpath'])
+valsplit = valsplit
 testsplit = os.listdir(config_submit['testpath'])
 
 dataset = DataBowl3Classifier(trainsplit,config2,phase = 'train')
