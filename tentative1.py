@@ -88,6 +88,7 @@ if not skip_prep:
     testsplit = full_prep(datapath,prep_result_path,
                           n_worker = config_submit['n_worker_preprocessing'],
                           use_existing=config_submit['use_exsiting_preprocessing'])
+    print('Phase decisive')
     valsplit = full_prep(valpath,prep_result_path,
                           n_worker = config_submit['n_worker_preprocessing'],
                           use_existing=config_submit['use_exsiting_preprocessing'])
